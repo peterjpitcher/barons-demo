@@ -14,7 +14,7 @@ const roadmap = [
 
 export default function NewsletterPage() {
   return (
-    <div className="mx-auto mt-10 mb-16 w-full max-w-3xl space-y-6 rounded-3xl border border-[#d8e1ea] bg-white/95 px-4 py-12 shadow-sm sm:mt-14 sm:mb-20 sm:px-6">
+    <div className="mx-auto mt-16 mb-24 w-full max-w-3xl space-y-6 rounded-3xl border surface-card px-4 py-14 shadow-sm sm:mt-20 sm:mb-28 sm:px-6">
       <div className="relative h-48 overflow-hidden rounded-2xl">
         <Image
           src="https://assets.baronspubs.com/uploads/sites/2/2025/09/1-1600x900.jpg"

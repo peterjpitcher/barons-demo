@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { privateSpaces } from '@/data/siteContent';
+import { PrivateHireForm } from '@/components/forms/PrivateHireForm';
+import { privateSpaces, teamContacts } from '@/data/siteContent';
 
 const privateHero = privateSpaces[0].image;
 const privateHeroAlt = privateSpaces[0].alt;
@@ -49,9 +50,27 @@ const processSteps = [
   'Receive automated reminders, pre-order forms and on-the-day running order.',
 ];
 
+const privateGallery = [
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/2-1600x900.jpg',
+    alt: 'Garden Room styled with fairy lights and long tables',
+    caption: 'Garden Room styling',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/1-1600x900.jpg',
+    alt: 'Pods and stretch umbrellas set for a party',
+    caption: 'Pods & terrace',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2021/12/IMG_3160-960x540.jpeg',
+    alt: 'Chef plating a dish for a private dinner',
+    caption: 'Chef-led dining',
+  },
+];
+
 export default function PrivateHirePage() {
   return (
-    <div className="mx-auto mt-10 mb-16 w-full max-w-6xl space-y-10 rounded-3xl border border-[#d8e1ea] bg-white/95 px-4 py-12 shadow-sm sm:mt-14 sm:mb-20 sm:px-6">
+    <div className="mx-auto mt-16 mb-24 w-full max-w-6xl space-y-10 rounded-3xl border surface-card px-4 py-12 shadow-sm sm:mt-20 sm:mb-28 sm:px-6">
       <header className="max-w-5xl space-y-6">
         <div className="relative h-56 overflow-hidden rounded-3xl shadow-sm sm:h-72">
           <Image
@@ -62,90 +81,124 @@ export default function PrivateHirePage() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+          <p className="absolute bottom-4 left-4 font-display text-sm uppercase tracking-[0.3em] text-white">Private hire</p>
         </div>
-        <p className="font-display text-sm uppercase tracking-[0.2em] text-slate-500">Private Hire · Signature Spaces</p>
-        <h1 className="mt-2 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">Spaces built for celebrations</h1>
-        <p className="mt-4 text-sm text-slate-600">
-          The finished experience will blend photography, availability info and live enquiry forms. Here we&apos;re
-          presenting abridged descriptions so stakeholders can visualise the layout and user journey.
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-accent">Signature spaces</p>
+        <h1 className="mt-2 font-display text-3xl font-semibold text-primary sm:text-4xl">Spaces built for celebrations</h1>
+        <p className="mt-4 text-sm text-muted">
+          The finished experience will blend photography, availability info and live enquiry forms. Here we present
+          high-level details to help stakeholders visualise the layout and user journey.
         </p>
       </header>
 
-      <section className="grid gap-6 lg:grid-cols-4">
+      <section className="grid gap-6 lg:grid-cols-[1.1fr,0.9fr]">
+        <div className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 shadow-sm">
+          <h2 className="font-display text-xl font-semibold text-primary">Tell us about your event</h2>
+          <p className="mt-2 text-sm text-muted">Our events team responds within one working day with availability and menus.</p>
+          <div className="mt-6">
+            <PrivateHireForm />
+          </div>
+        </div>
+        <div className="space-y-6">
+          <div className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 shadow-sm">
+            <h3 className="font-display text-lg font-semibold text-primary">Planning essentials</h3>
+            <dl className="mt-3 space-y-4">
+              {faqs.map((faq) => (
+                <div key={faq.question}>
+                  <dt className="font-semibold text-primary">{faq.question}</dt>
+                  <dd className="text-sm text-muted">{faq.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 shadow-sm">
+            <h3 className="font-display text-lg font-semibold text-primary">Meet the team</h3>
+            <ul className="mt-3 space-y-3 text-sm text-muted">
+              {teamContacts.map((contact) => (
+                <li key={contact.role}>
+                  <span className="font-semibold text-primary">{contact.role}</span> — {contact.name} · {contact.email} · {contact.phone}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {privateGallery.map((shot) => (
+              <figure key={shot.src} className="relative h-40 overflow-hidden rounded-3xl shadow-sm">
+                <Image
+                  src={shot.src}
+                  alt={shot.alt}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 30vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-3">
+                  <figcaption className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white">
+                    {shot.caption}
+                  </figcaption>
+                </div>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-3">
         {privateSpaces.map((space) => (
-          <div key={space.name} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-            <div className="relative h-40">
+          <div key={space.name} className="overflow-hidden rounded-3xl border border-[var(--surface-border)] bg-white shadow-sm">
+            <div className="relative h-44">
               <Image
                 src={space.image}
                 alt={space.alt}
                 fill
-                sizes="(max-width: 1024px) 100vw, 22vw"
+                sizes="(max-width: 1024px) 100vw, 24vw"
                 className="object-cover"
               />
-              <div className="absolute left-4 top-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#273640]">
+              <div className="tag-soft absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">
                 {space.capacity}
               </div>
             </div>
             <div className="p-6">
-              <h2 className="font-display text-xl font-semibold text-slate-900">{space.name}</h2>
-              <p className="mt-3 text-sm text-slate-600">{space.blurb}</p>
+              <h2 className="font-display text-xl font-semibold text-primary">{space.name}</h2>
+              <p className="mt-3 text-sm text-muted">{space.blurb}</p>
             </div>
           </div>
         ))}
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="font-display text-xl font-semibold text-slate-900">Popular packages</h2>
-          <ul className="mt-3 space-y-3 text-sm text-slate-600">
+        <div className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 shadow-sm">
+          <h2 className="font-display text-xl font-semibold text-primary">Popular packages</h2>
+          <ul className="mt-3 space-y-3 text-sm text-muted">
             {packages.map((pack) => (
-              <li key={pack.title} className="rounded-2xl bg-slate-50 p-4">
-                <p className="font-semibold text-slate-900">{pack.title}</p>
+              <li key={pack.title} className="rounded-2xl bg-[var(--surface-alt)] p-4">
+                <p className="font-semibold text-primary">{pack.title}</p>
                 <p>{pack.detail}</p>
               </li>
             ))}
           </ul>
         </div>
-        <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="font-display text-xl font-semibold text-slate-900">FAQs</h2>
-          <dl className="mt-4 space-y-4">
-            {faqs.map((faq) => (
-              <div key={faq.question}>
-                <dt className="font-semibold text-slate-900">{faq.question}</dt>
-                <dd className="text-sm text-slate-600">{faq.answer}</dd>
-              </div>
+        <div className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 shadow-sm">
+          <h2 className="font-display text-xl font-semibold text-primary">Event timeline</h2>
+          <ol className="mt-3 space-y-3 text-sm text-muted">
+            {processSteps.map((step, index) => (
+              <li key={step} className="flex gap-3">
+                <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[var(--accent-soft)] text-xs font-semibold text-accent">
+                  {index + 1}
+                </span>
+                <span>{step}</span>
+              </li>
             ))}
-          </dl>
+          </ol>
         </div>
       </section>
 
-      <section className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-        <h2 className="font-display text-xl font-semibold text-slate-900">Event timeline</h2>
-        <ol className="mt-3 space-y-2 text-sm text-slate-600">
-          {processSteps.map((step, index) => (
-            <li key={step}>
-              <span className="font-semibold text-slate-900">{index + 1}.</span> {step}
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className="rounded-3xl border border-dashed border-slate-300 bg-slate-50/70 p-6">
-        <h2 className="font-display text-xl font-semibold text-slate-900">Enquiry form placeholder</h2>
-        <p className="mt-3 text-sm text-slate-600">
-          In the production build this space will host the private hire form integrated with the Barons CRM. Here we
-          describe the intent and keep the layout clean.
-        </p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          {['Name', 'Email', 'Phone', 'Preferred Date'].map((label) => (
-            <div key={label} className="rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-400">
-              {label} · input forthcoming
-            </div>
-          ))}
-          <div className="sm:col-span-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-400">
-            Event details textarea placeholder
-          </div>
-        </div>
+      <section className="rounded-3xl border border-dashed border-[var(--surface-border)] bg-[var(--surface-alt)] p-6">
+        <h2 className="font-display text-xl font-semibold text-primary">Roadmap for the production build</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted">
+          <li>Integration with the CRM to trigger confirmation emails and deposit links automatically.</li>
+          <li>Drag-and-drop media gallery showcasing layouts, table plans and décor inspiration.</li>
+          <li>Availability calendar that highlights peak festive weeks and summer weekends.</li>
+        </ul>
       </section>
     </div>
   );

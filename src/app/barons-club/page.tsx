@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function BaronsClubPage() {
   return (
-    <div className="mx-auto mt-10 mb-16 w-full max-w-6xl space-y-10 rounded-3xl border border-[#d8e1ea] bg-white/95 px-4 py-12 shadow-sm sm:mt-14 sm:mb-20 sm:px-6">
+    <div className="mx-auto mt-16 mb-24 w-full max-w-6xl space-y-10 rounded-3xl border surface-card px-4 py-14 shadow-sm sm:mt-20 sm:mb-28 sm:px-6">
       <div className="relative h-56 overflow-hidden rounded-3xl shadow-sm sm:h-64">
         <Image
           src="https://assets.baronspubs.com/uploads/sites/2/2025/09/3-1600x900.jpg"
@@ -44,7 +44,7 @@ export default function BaronsClubPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
       </div>
       <header className="max-w-3xl">
-        <p className="font-display text-sm uppercase tracking-[0.3em] text-[#637c8c]">Loyalty</p>
+        <p className="font-display text-sm uppercase tracking-[0.3em] text-accent">Loyalty</p>
         <h1 className="mt-2 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">Welcome to the Barons Club</h1>
         <p className="mt-4 text-sm text-slate-600">
           The Barons Club replaces the Diners Card with a mobile membership that works across every venue in the family.
@@ -69,10 +69,7 @@ export default function BaronsClubPage() {
             <li>Save the digital pass to your wallet and scan with every visit.</li>
             <li>Watch rewards appear instantly and redeem them whenever you dine.</li>
           </ol>
-          <Link
-            href="/book"
-            className="mt-4 inline-flex items-center rounded-full bg-[#637c8c] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#4f6574]"
-          >
+          <Link href="/book" className="button-accent mt-4 inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold">
             Book your next visit
           </Link>
         </div>

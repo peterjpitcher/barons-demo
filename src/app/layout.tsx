@@ -5,6 +5,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SuperHeader } from '@/components/SuperHeader';
 import { SeasonProvider } from '@/context/SeasonContext';
+import { StyleProvider } from '@/context/StyleContext';
 
 const manrope = Manrope({
   variable: '--font-sans',
@@ -33,21 +34,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${playfair.variable} font-sans text-slate-900`}>
-        <SeasonProvider>
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900"
-          >
-            Skip to content
-          </a>
-          <SuperHeader />
-          <Header />
-          <main id="main" className="min-h-[60vh]">
-            {children}
-          </main>
-          <Footer />
-        </SeasonProvider>
+      <body className={`${manrope.variable} ${playfair.variable} font-sans`} data-style="heritage">
+        <StyleProvider>
+          <SeasonProvider>
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:m-4 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-900"
+            >
+              Skip to content
+            </a>
+            <SuperHeader />
+            <Header />
+            <main id="main" className="min-h-[60vh]">
+              {children}
+            </main>
+            <Footer />
+          </SeasonProvider>
+        </StyleProvider>
       </body>
     </html>
   );

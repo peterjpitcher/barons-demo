@@ -115,11 +115,20 @@ export function MenuTabs() {
             key={tab.key}
             type="button"
             onClick={() => setActive(tab.key)}
-            className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
+            className="rounded-full border px-4 py-2 text-sm font-semibold transition"
+            style={
               tab.key === active
-                ? 'border-[#273640] bg-[#273640] text-white'
-                : 'border-[#d8e1ea] bg-white text-[#273640] hover:border-[#273640]/50'
-            }`}
+                ? {
+                    backgroundColor: 'var(--accent)',
+                    color: 'var(--accent-contrast)',
+                    borderColor: 'var(--accent)',
+                  }
+                : {
+                    backgroundColor: 'var(--surface-alt)',
+                    color: 'var(--body-text)',
+                    borderColor: 'var(--surface-border)',
+                  }
+            }
           >
             {tab.label}
           </button>
@@ -127,28 +136,28 @@ export function MenuTabs() {
       </div>
 
       {activeTab.description ? (
-        <p className="text-sm text-slate-600">{activeTab.description}</p>
+        <p className="text-sm text-muted">{activeTab.description}</p>
       ) : null}
 
       <div className="space-y-6">
         {activeTab.categories.map((category) => (
-          <div key={category.id} className="rounded-3xl border border-[#d8e1ea] bg-white/95 p-6 shadow-sm">
-            <h3 className="font-display text-xl font-semibold text-slate-900">{category.title}</h3>
-            {category.subtitle ? <p className="text-sm text-slate-500">{category.subtitle}</p> : null}
+          <div key={category.id} className="rounded-3xl border surface-card p-6 shadow-sm">
+            <h3 className="font-display text-xl font-semibold text-primary">{category.title}</h3>
+            {category.subtitle ? <p className="text-sm text-muted">{category.subtitle}</p> : null}
             <ul className="mt-4 space-y-3">
               {category.items.map((item) => (
-                <li key={item.name} className="rounded-2xl bg-[#f5f8fa] p-4">
-                  <div className="flex flex-wrap items-baseline gap-2 text-slate-900">
+                <li key={item.name} className="rounded-2xl surface-alt-card border p-4">
+                  <div className="flex flex-wrap items-baseline gap-2 text-primary">
                     <span className="font-semibold">{item.name}</span>
-                    {item.price ? <span className="text-sm text-slate-500">{item.price}</span> : null}
+                    {item.price ? <span className="text-sm text-muted">{item.price}</span> : null}
                     {item.dietary && (
-                      <span className="rounded-full bg-[#c1cbd1] px-2 py-0.5 text-[11px] font-semibold uppercase text-[#273640]">
+                      <span className="tag-soft rounded-full px-2 py-0.5 text-[11px] font-semibold uppercase">
                         {item.dietary.join(', ')}
                       </span>
                     )}
                   </div>
                   {item.description ? (
-                    <p className="mt-1 text-sm text-slate-600">{item.description}</p>
+                    <p className="mt-1 text-sm text-muted">{item.description}</p>
                   ) : null}
                 </li>
               ))}
@@ -157,14 +166,14 @@ export function MenuTabs() {
         ))}
       </div>
 
-      <div className="rounded-3xl border border-dashed border-[#d8e1ea] bg-white/95 p-6">
-        <h3 className="font-display text-lg font-semibold text-slate-900">Download full menus</h3>
-        <p className="mt-2 text-sm text-slate-600">
+      <div className="surface-card rounded-3xl border border-dashed p-6">
+        <h3 className="font-display text-lg font-semibold text-primary">Download full menus</h3>
+        <p className="mt-2 text-sm text-muted">
           Detailed PDFs stay handy for guests and planners. We&apos;ll connect these to the CMS in the live build so updates are effortless.
         </p>
         <ul className="mt-4 grid gap-2 sm:grid-cols-2">
           {menuDownloads.map((link) => (
-            <li key={link.href} className="text-sm text-[#273640]">
+            <li key={link.href} className="text-sm text-primary">
               <Link href={link.href} className="hover:underline">
                 {link.label}
               </Link>

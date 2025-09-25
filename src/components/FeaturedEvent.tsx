@@ -20,28 +20,24 @@ export function FeaturedEvent() {
   const imageAlt = featured.alt ?? fallbackAlt;
 
   return (
-    <section className="mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border border-[#cdd8e1] bg-white/95 shadow-sm">
+    <section className="mx-auto w-full max-w-6xl overflow-hidden rounded-3xl border surface-card shadow-sm">
       <div className="grid gap-0 lg:grid-cols-[1.2fr,1fr]">
         <div className="p-6 sm:p-10">
-          <p className="font-display text-sm uppercase tracking-[0.3em]" style={{ color: config.accent }}>
+          <p className="font-display text-sm uppercase tracking-[0.3em] text-accent">
             {config.featuredEventTag}
           </p>
-          <h2 className="mt-4 font-display text-2xl font-semibold text-slate-900 sm:text-3xl">{featured.title}</h2>
-          <p className="mt-2 text-sm font-semibold text-slate-500">{featured.date}</p>
-          <p className="mt-4 text-sm text-slate-600">{featured.summary}</p>
+          <h2 className="mt-4 font-display text-2xl font-semibold text-primary sm:text-3xl">{featured.title}</h2>
+          <p className="mt-2 text-sm font-semibold text-muted">{featured.date}</p>
+          <p className="mt-4 text-sm text-muted">{featured.summary}</p>
           {featured.ctaHref && (
-            <Link
-              href={featured.ctaHref}
-              className="mt-6 inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold text-[#273640] transition hover:opacity-90"
-              style={{ backgroundColor: config.accent }}
-            >
+            <Link href={featured.ctaHref} className="button-accent mt-6 inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold">
               {featured.ctaLabel ?? 'Learn more'}
             </Link>
           )}
-          <div className="mt-6 rounded-2xl bg-slate-50/80 p-4 text-sm text-slate-600">
-            <p className="font-semibold text-slate-900">Seasonal highlights</p>
+          <div className="surface-alt-card mt-6 rounded-2xl border p-4 text-sm text-muted">
+            <p className="font-semibold text-primary">Seasonal highlights</p>
             <p className="mt-2">Switch the bar above to see how upcoming celebrations change the headline event.</p>
-            <p className="mt-3 text-xs uppercase tracking-wide text-slate-500">Currently viewing: {config.label}</p>
+            <p className="mt-3 text-xs uppercase tracking-wide text-subtle">Currently viewing: {config.label}</p>
           </div>
         </div>
         <div className="relative min-h-[260px] lg:min-h-full">

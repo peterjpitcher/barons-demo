@@ -1,3 +1,5 @@
+import type { SeasonKey } from '@/config/seasons';
+
 export const heroSlides = [
   {
     title: 'Gather at The Cricketers',
@@ -83,7 +85,39 @@ export const highlightDishes = [
   },
 ];
 
-import type { SeasonKey } from '@/config/seasons';
+
+export const galleryImages = [
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2018/09/Photo-28-04-2022-16-00-14-960x540.jpg',
+    alt: 'Garden Room at The Cricketers set for a celebration with festoon lighting',
+    caption: 'Garden Room celebrations',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/3-1600x900.jpg',
+    alt: 'Friends enjoying cocktails inside heated pods at dusk',
+    caption: 'Pods & terrace evenings',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2020/02/Barons-Pub-Company-Cricketers-interior-13-960x540.jpg',
+    alt: 'Interior dining room with natural light and laid tables',
+    caption: 'Light-filled dining room',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2022/01/Photo-07-01-2022-10-44-35-960x540.jpg',
+    alt: 'Sunday roast spread with meats, vegetables and gravy',
+    caption: 'Sunday roast service',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/1-1600x900.jpg',
+    alt: 'Garden pod exterior lit up with candles and lanterns',
+    caption: 'Signature pods',
+  },
+  {
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2021/12/IMG_3160-960x540.jpeg',
+    alt: 'Chef plating a main course with precision at the pass',
+    caption: 'Chef at the pass',
+  },
+];
 
 export type SampleEvent = {
   title: string;
@@ -153,6 +187,39 @@ export const sampleEvents: SampleEvent[] = [
     image: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/3-1600x900.jpg',
     alt: 'Springtime garden celebration with guests raising drinks',
   },
+  {
+    title: 'Fizz Friday Garden Sessions',
+    date: 'Every Friday · 5–9pm',
+    summary: 'Live DJ, sharing boards and two-for-one English sparkling wine to welcome the weekend.',
+    category: 'Weekly Ritual',
+    seasons: ['classic', 'spring'],
+    ctaLabel: 'Reserve a pod',
+    ctaHref: '/book',
+    image: 'https://assets.baronspubs.com/uploads/sites/2/2022/08/Photo-12-08-2022-19-03-32-440x248.jpg',
+    alt: 'Outdoor table with fizz and sharing boards at dusk',
+  },
+  {
+    title: 'Family Pizza Sundays',
+    date: 'Sundays · 12–6pm',
+    summary: 'Build-your-own pizzas for kids, Aperol towers for grown-ups and lawn games across the terrace.',
+    category: 'Family Favourite',
+    seasons: ['classic', 'spring'],
+    ctaLabel: 'See pizza shack menu',
+    ctaHref: '/menus',
+    image: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/1-1600x900.jpg',
+    alt: 'Family gathered around a pizza shack table enjoying slices',
+  },
+  {
+    title: 'Chef’s Table: Sussex Estates Wine Dinner',
+    date: '7 February · 7–10pm',
+    summary: 'Five courses from Chef Ellie paired with boutique English wines, hosted in the Garden Room.',
+    category: 'Chef Series',
+    seasons: ['classic'],
+    ctaLabel: 'Join the waitlist',
+    ctaHref: '/barons-club',
+    image: 'https://assets.baronspubs.com/uploads/sites/2/2021/12/IMG_3160-960x540.jpeg',
+    alt: 'Close-up of plated main course with wine glass in foreground',
+  },
 ];
 
 export const privateSpaces = [
@@ -183,6 +250,20 @@ export const privateSpaces = [
     blurb: 'Semi-private spaces inside the pub for intimate dinners, tasting menus or brunch clubs.',
     image: 'https://assets.baronspubs.com/uploads/sites/2/2018/09/cricketers-interior-3-1600x900.jpg',
     alt: 'Cosy dining nook with upholstered seating and warm lighting',
+  },
+  {
+    name: 'The Snug',
+    capacity: 'Up to 12 guests',
+    blurb: 'Tucked beside the fireplace with heritage artwork and soft seating, ideal for elevated tasting menus.',
+    image: 'https://assets.baronspubs.com/uploads/sites/2/2018/09/cricketers-interior-3-1280x720.jpg',
+    alt: 'Intimate snug space with banquette seating and open fire',
+  },
+  {
+    name: 'The Willow Lawn',
+    capacity: 'Outdoor receptions up to 120',
+    blurb: 'Blank-canvas lawn framed by mature willows — perfect for stretch tents, lawn games and summer celebrations.',
+    image: 'https://assets.baronspubs.com/uploads/sites/2/2025/09/3-1600x900.jpg',
+    alt: 'Lawn with festoon lighting ready for an outdoor reception',
   },
 ];
 
@@ -217,6 +298,42 @@ export const familyVenues = [
     image: 'https://assets.baronspubs.com/uploads/sites/2/2020/02/Barons-Pub-Company-Cricketers-exterior-22-960x540.jpg',
     alt: 'Wide view of The Cricketers exterior and garden seating',
   },
+  {
+    name: 'The Crown & Cushion · Minley',
+    description: 'Country coaching inn with rustic beams, log fires and live music Thursdays.',
+    image: 'https://assets.baronspubs.com/uploads/sites/6/2019/01/Barons-Pub-Company-Crown-and-Cushion-1.jpg',
+    alt: 'Rustic interior at the Crown & Cushion with timber beams',
+  },
+  {
+    name: 'The Horseshoe · Warlingham',
+    description: 'Fresh pizzas, garden huts and a buzzing weekend brunch service.',
+    image: 'https://assets.baronspubs.com/uploads/sites/5/2019/01/Barons-pub-Company-The-Horseshoe-14-640x360.jpg',
+    alt: 'Horseshoe pub garden with covered huts',
+  },
+  {
+    name: 'The Jovial Sailor · Ripley',
+    description: 'Riverside walks, dog-friendly bar, and a newly refreshed terrace.',
+    image: 'https://assets.baronspubs.com/uploads/sites/9/2019/02/jovial-sailor-bar-1.jpg',
+    alt: 'Bar area of the Jovial Sailor with rustic styling',
+  },
+  {
+    name: 'The Rose & Crown · Thorpe',
+    description: 'Thatched gem with private huts, play area and hearty Sunday roasts.',
+    image: 'https://assets.baronspubs.com/uploads/sites/4/2018/10/rose-and-crown-huts-1-640x360.jpg',
+    alt: 'Rose & Crown garden huts at twilight',
+  },
+  {
+    name: 'The Shinfield Arms · Shinfield',
+    description: 'Open kitchen, craft beer rotation and a relaxed coworking-friendly lounge.',
+    image: 'https://assets.baronspubs.com/uploads/sites/8/2018/09/black-boy-interior-1-2.jpg',
+    alt: 'Shinfield Arms dining room with modern furnishings',
+  },
+  {
+    name: 'Meade Hall · Chobham',
+    description: 'Grade II listed banqueting hall for weddings, medieval feasts and grand celebrations.',
+    image: 'https://assets.meadehall.co.uk/uploads/2021/03/Meade-Hall-wedding-set-up-9-440x248.jpg',
+    alt: 'Meade Hall wedding setup with long banqueting tables',
+  },
 ];
 
 export const testimonials = [
@@ -249,4 +366,102 @@ export const locationHighlights = [
   '5 minutes from Horsell Common for pre-lunch strolls (AllTrails route coming soon).',
   'Heated pods and tented seating make alfresco dining effortless year-round.',
   'Dogs welcome in the bar, garden and pods with water bowls & biscuits ready.',
+];
+
+export const bookingFaqs = [
+  {
+    question: 'Do you take walk-ins?',
+    answer: 'Absolutely — we always keep a portion of the bar and garden pods available for walk-in guests. Booking guarantees your preferred space.',
+  },
+  {
+    question: 'Can I bring the dog?',
+    answer: 'Dogs are welcome in the bar, terrace and pods. Let us know in the notes and we will have water bowls and biscuits ready.',
+  },
+  {
+    question: 'How long is the table held?',
+    answer: 'We hold bookings for 15 minutes. If you’re running late give the team a call and we’ll do our best to keep the table.',
+  },
+  {
+    question: 'Is there a deposit for pods?',
+    answer: 'Pods require a GBP 25 deposit which is fully redeemable against your final bill. For peak dates it increases to GBP 50.',
+  },
+];
+
+export const bookingOccasions = [
+  'Casual lunch',
+  'Celebration dinner',
+  'Date night',
+  'Family gathering',
+  'Business meeting',
+  'Sunday carvery',
+];
+
+export const bookingAreas = ['Main restaurant', 'Garden pod', 'Terrace umbrella', 'Bar', 'Garden Room'];
+
+export const hireOccasions = ['Birthday celebration', 'Wedding after party', 'Corporate away day', 'Charity fundraiser', 'Life celebration', 'Children’s party'];
+
+export const hireBudgets = ['Under £500', '£500 – £1,000', '£1,000 – £2,000', '£2,000+'];
+
+export const hireTimings = ['Breakfast / morning', 'Lunch', 'Afternoon tea', 'Evening', 'Full day'];
+
+export const teamContacts = [
+  {
+    role: 'General Manager',
+    name: 'Ellie Blackburn',
+    email: 'ellie.blackburn@baronspubs.com',
+    phone: '01483 762363',
+  },
+  {
+    role: 'Events & Private Hire',
+    name: 'Mark Lamont',
+    email: 'events.thecricketers@baronspubs.com',
+    phone: '01483 762363',
+  },
+  {
+    role: 'Barons Family Support',
+    name: 'Barons Guest Services',
+    email: 'hello@baronspubs.com',
+    phone: '01252 783553',
+  },
+];
+
+export const newsletterInterests = [
+  'Seasonal menus',
+  'Live music & entertainment',
+  'Family activities',
+  'Wine & spirits tastings',
+  'Exclusive offers',
+  'Private hire news',
+];
+
+export const newsletterVenues = ['The Cricketers', 'Any Barons pub nearby', 'Heather Farm Café', 'Pods & outdoor dining', 'Staycations'];
+
+export const loyaltyVenues = [
+  'The Cricketers · Horsell',
+  'The Star · Leatherhead',
+  'The Bletchingley Arms · Bletchingley',
+  'The Jovial Sailor · Ripley',
+  'The Horseshoe · Warlingham',
+  'The Crown & Cushion · Minley',
+  'The Inn at West End · West End',
+];
+
+export const pressHighlights = [
+  'Surrey Life: “The Cricketers brings the magic back to pub dining with its heated pods.”',
+  'Muddy Stilettos: “Private hire perfection — flexible spaces and joyful hosts.”',
+  'The Times (Weekend): “One of Surrey’s best Sunday roasts — don’t miss the cauliflower cheese.”',
+];
+
+export const baronsStats = [
+  { label: 'Venues across Surrey & Berkshire', value: '11' },
+  { label: 'Pods & huts available to book', value: '36' },
+  { label: 'Barons Club members', value: '48k+' },
+  { label: 'Local suppliers partnered with', value: '72' },
+];
+
+export const chefNotes = [
+  'Our sourdough pizza dough proves for 48 hours for extra flavour and crunch.',
+  'Sunday roasts use Red Tractor beef and free-range chicken delivered every morning.',
+  'Ask about the seasonal low & no list — we shake zero-proof spritzes with house cordials.',
+  'Vegetarian and vegan dishes are curated with feedback from the Barons Veg Society focus group.',
 ];

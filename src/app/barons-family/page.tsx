@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { familyVenues } from '@/data/siteContent';
+import { familyVenues, baronsStats } from '@/data/siteContent';
 
 const familyHero = 'https://assets.baronspubs.com/uploads/sites/2/2025/09/3-1600x900.jpg';
 const familyHeroAlt = 'Barons team and guests enjoying the garden together';
@@ -21,7 +21,7 @@ const pillars = [
 
 export default function BaronsFamilyPage() {
   return (
-    <div className="mx-auto mt-10 mb-16 w-full max-w-6xl space-y-10 rounded-3xl border border-[#d8e1ea] bg-white/95 px-4 py-12 shadow-sm sm:mt-14 sm:mb-20 sm:px-6">
+    <div className="mx-auto mt-16 mb-24 w-full max-w-6xl space-y-12 rounded-3xl border surface-card px-4 py-14 shadow-sm sm:mt-20 sm:mb-28 sm:px-6">
       <header className="max-w-5xl space-y-6">
         <div className="relative h-56 overflow-hidden rounded-3xl shadow-sm sm:h-64">
           <Image
@@ -40,6 +40,15 @@ export default function BaronsFamilyPage() {
           five flagship venues and the brand pillars we&apos;ll expand upon in the full build.
         </p>
       </header>
+
+<section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {baronsStats.map((stat) => (
+          <div key={stat.label} className="rounded-3xl border border-[var(--surface-border)] bg-white p-6 text-center shadow-sm">
+            <p className="font-display text-3xl font-semibold text-primary">{stat.value}</p>
+            <p className="mt-2 text-xs uppercase tracking-[0.25em] text-subtle">{stat.label}</p>
+          </div>
+        ))}
+      </section>
 
       <section className="grid gap-6 md:grid-cols-3">
         {familyVenues.map((venue) => (

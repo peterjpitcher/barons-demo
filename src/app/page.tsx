@@ -2,6 +2,7 @@ import { Hero } from '@/components/Hero';
 import { QuickActions } from '@/components/QuickActions';
 import { FeaturedEvent } from '@/components/FeaturedEvent';
 import { MenuSpotlight } from '@/components/MenuSpotlight';
+import { ExperienceGallery } from '@/components/ExperienceGallery';
 import { PrivateHirePreview } from '@/components/PrivateHirePreview';
 import { BaronsClubSignup } from '@/components/BaronsClubSignup';
 import { Testimonials } from '@/components/Testimonials';
@@ -14,6 +15,7 @@ export default function HomePage() {
       <QuickActions />
       <FeaturedEvent />
       <MenuSpotlight />
+      <ExperienceGallery />
       <PrivateHirePreview />
       <BaronsClubSignup />
       <Testimonials />
