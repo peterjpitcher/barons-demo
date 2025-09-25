@@ -30,16 +30,16 @@ export function QuickActions() {
               <div className="quicklink-overlay absolute inset-0" style={{ background: theme.quickActions.overlay }} />
             </div>
             <div
-              className="relative flex h-full flex-col justify-between p-4"
-              style={{ color: theme.quickActions.text }}
+              className="relative flex h-full flex-col justify-between gap-4 rounded-3xl border border-white/10 p-5 sm:p-6"
+              style={{ color: theme.quickActions.text, backgroundColor: theme.quickActions.panel, backdropFilter: 'blur(6px)' }}
             >
               <div>
                 <span className="block font-display text-lg font-semibold tracking-wide">{link.label}</span>
                 <span className="mt-2 block text-sm font-normal opacity-80">{link.description}</span>
               </div>
               <span
-                className="quicklink-badge mt-4 inline-flex items-center rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.28em]"
-                style={{ color: theme.quickActions.text }}
+                className="mt-4 inline-flex items-center rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.28em]"
+                style={{ color: theme.quickActions.text, backgroundColor: theme.quickActions.badge }}
               >
                 Tap to continue
               </span>
