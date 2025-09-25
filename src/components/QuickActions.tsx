@@ -28,10 +28,11 @@ export function QuickActions() {
                 className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
               />
               <div className="quicklink-overlay absolute inset-0" style={{ background: theme.quickActions.overlay }} />
+              <div className="absolute inset-0" style={{ backgroundColor: theme.quickActions.panel }} />
             </div>
             <div
-              className="relative flex h-full flex-col justify-between gap-4 rounded-3xl border border-white/10 p-5 sm:p-6"
-              style={{ color: theme.quickActions.text, backgroundColor: theme.quickActions.panel, backdropFilter: 'blur(6px)' }}
+              className="relative flex h-full flex-col justify-between gap-4 p-5 sm:p-6"
+              style={{ color: theme.quickActions.text }}
             >
               <div>
                 <span className="block font-display text-lg font-semibold tracking-wide">{link.label}</span>

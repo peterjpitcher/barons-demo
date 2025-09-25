@@ -62,7 +62,7 @@ export const styleThemes: Record<StyleKey, StyleTheme> = {
       overlay: 'linear-gradient(180deg, rgba(19,30,38,0.15) 0%, rgba(19,30,38,0.75) 100%)',
       text: '#f8fafc',
       badge: 'rgba(255,255,255,0.35)',
-      panel: 'rgba(9, 18, 27, 0.62)',
+      panel: 'rgba(12, 24, 36, 0.82)',
     },
   },
   modern: {
@@ -109,7 +109,7 @@ export const styleThemes: Record<StyleKey, StyleTheme> = {
       overlay: 'linear-gradient(200deg, rgba(31,122,140,0.15) 0%, rgba(31,122,140,0.7) 100%)',
       text: '#f9fbfc',
       badge: 'rgba(255,255,255,0.55)',
-      panel: 'rgba(19, 40, 50, 0.58)',
+      panel: 'rgba(15, 48, 58, 0.78)',
     },
   },
   nocturne: {
@@ -156,7 +156,7 @@ export const styleThemes: Record<StyleKey, StyleTheme> = {
       overlay: 'linear-gradient(200deg, rgba(5,7,14,0.2) 0%, rgba(5,7,14,0.75) 100%)',
       text: '#f9fafb',
       badge: 'rgba(217,119,6,0.45)',
-      panel: 'rgba(5,7,14,0.65)',
+      panel: 'rgba(5,7,14,0.8)',
     },
   },
 };
