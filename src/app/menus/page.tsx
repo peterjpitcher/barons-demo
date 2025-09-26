@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { MenuTabs } from '@/components/MenuTabs';
 import { highlightDishes } from '@/data/siteContent';
 import { menuDownloads } from '@/data/menus';
@@ -69,48 +68,51 @@ export default function MenusPage() {
 
   return (
     <div className="mx-auto mt-16 mb-20 w-full max-w-6xl space-y-16 px-4 sm:mt-20 sm:mb-24 sm:px-6">
-      <header className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <header className="space-y-8">
         <div className="space-y-6">
           <p className="font-display text-xs uppercase tracking-[0.3em] text-muted">Menus · Explore everything</p>
           <h1 className="font-display text-3xl font-semibold text-primary sm:text-4xl">
             Every Barons menu organised for quick browsing
           </h1>
           <p className="text-sm text-muted sm:text-base">
-            Toggle between all-day dining, brunch, desserts, Pizza Shack specials, events platters and children&apos;s
-            favourites. The compact cards pull every dish straight from our structured menu data so guests can skim,
-            search and favourite without digging through PDFs.
+            Scroll to discover every dish, then download the PDFs for planning and sharing. Breakfast, all-day dining,
+            desserts, Pizza Shack, buffet spreads and festive menus are all captured below for easy reference and SEO
+            visibility.
           </p>
-          <dl className="grid gap-3 sm:grid-cols-3">
-            {quickFacts.map((fact) => (
-              <div key={fact.label} className="rounded-2xl surface-card border p-4 shadow-sm">
-                <dt className="text-xs font-semibold uppercase tracking-wide text-muted">{fact.label}</dt>
-                <dd className="mt-2 text-sm font-semibold text-primary">{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
-          <div className="rounded-2xl border border-dashed surface-card p-4 shadow-sm">
-            <p className="font-display text-lg font-semibold text-primary">Need a printable version?</p>
-            <p className="mt-2 text-sm text-muted">
-              These PDFs stay handy for planners while the site handles day-to-day menu browsing.
-            </p>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {menuDownloads.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm font-semibold text-primary hover:underline">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
-        <div className="relative hidden overflow-hidden rounded-3xl border surface-card shadow-lg lg:block">
+        <dl className="grid gap-3 sm:grid-cols-3">
+          {quickFacts.map((fact) => (
+            <div key={fact.label} className="rounded-2xl surface-card border p-4 shadow-sm">
+              <dt className="text-xs font-semibold uppercase tracking-wide text-muted">{fact.label}</dt>
+              <dd className="mt-2 text-sm font-semibold text-primary">{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div className="rounded-2xl border border-dashed surface-card p-4 shadow-sm">
+          <p className="font-display text-lg font-semibold text-primary">Need a printable version?</p>
+          <p className="mt-2 text-sm text-muted">
+            Download the PDFs for team briefings, table planners and allergen checks. The live menus below mirror the
+            same data.
+          </p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {menuDownloads.map((link) => (
+              <li key={link.href}>
+                <a href={link.href} className="text-sm font-semibold text-primary hover:underline">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="relative overflow-hidden rounded-3xl border surface-card shadow-lg">
           <Image
             src={menuHero}
             alt={menuHeroAlt}
             fill
-            sizes="(min-width: 1024px) 45vw, 100vw"
+            sizes="(max-width: 768px) 100vw, 60vw"
             className="object-cover"
             priority
           />
@@ -165,34 +167,17 @@ export default function MenusPage() {
                 </div>
                 <div className="grid gap-4 md:grid-cols-2">
                   {groupDownloads.map((download) => (
-                    <details
-                      key={download.href}
-                      className="group rounded-3xl border surface-card p-5 shadow-sm transition hover:border-[var(--accent)]"
-                    >
-                      <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-left">
-                        <span className="font-semibold text-primary">{download.label}</span>
-                        <span className="text-xs uppercase tracking-wide text-subtle group-open:text-accent">Open</span>
-                      </summary>
-                      <div className="mt-4 space-y-3">
-                        <div className="overflow-hidden rounded-2xl border bg-white">
-                          <object
-                            data={download.href}
-                            type="application/pdf"
-                            className="h-80 w-full"
-                          >
-                            <p className="p-4 text-sm text-muted">
-                              PDF preview unavailable.{' '}
-                              <Link href={download.href} className="text-primary underline">
-                                Download {download.label}
-                              </Link>
-                            </p>
-                          </object>
-                        </div>
-                        <Link href={download.href} className="text-sm font-semibold text-primary hover:underline">
-                          Download {download.label}
-                        </Link>
-                      </div>
-                    </details>
+                    <div key={download.href} className="rounded-3xl border surface-card p-5 shadow-sm">
+                      <p className="text-sm font-semibold text-primary">{download.label}</p>
+                      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-subtle">PDF download</p>
+                      <a
+                        href={download.href}
+                        download
+                        className="button-outline mt-4 inline-flex w-fit rounded-full px-4 py-2 text-sm font-semibold"
+                      >
+                        Download PDF
+                      </a>
+                    </div>
                   ))}
                 </div>
               </div>
