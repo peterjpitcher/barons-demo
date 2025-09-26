@@ -171,15 +171,24 @@ export function PrivateHireForm() {
           className="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-3 text-sm text-primary shadow-sm"
         />
       </div>
-      <label className="flex items-start gap-3 text-xs text-muted">
-        <input type="checkbox" name="brochure" className="mt-1" />
-        Email me the latest party brochure and styling ideas.
-      </label>
+      <div className="space-y-2 text-xs text-muted">
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="marketingConsent" className="mt-1" />
+          I consent to marketing communications.
+        </label>
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="joinBaronsClub" className="mt-1" />
+          I want to join the Barons Club.
+        </label>
+        <p className="pl-6 text-[11px] text-muted">
+          Guests receive styling tips, sample menus and exclusive hire offers first.
+        </p>
+      </div>
       <button type="submit" className="button-accent inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold">
         {submitted ? 'Thanks — the team will respond within 24 hours' : 'Send enquiry'}
       </button>
       <p className="text-xs text-muted">
-        Once the CRM integration is live this will trigger automated confirmations, brochures and deposit links.
+        Our events specialists will be in touch shortly with availability, styling ideas and next steps.
       </p>
     </form>
   );

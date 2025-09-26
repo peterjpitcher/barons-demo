@@ -109,16 +109,23 @@ export function ContactForm() {
           className="rounded-lg border border-[var(--surface-border)] bg-[var(--surface)] px-4 py-3 text-sm text-primary shadow-sm"
         />
       </div>
-      <label className="flex items-start gap-3 text-xs text-muted">
-        <input type="checkbox" name="clubOptIn" className="mt-1" />
-        Keep me in the loop with news from The Barons Family.
-      </label>
+      <div className="space-y-2 text-xs text-muted">
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="marketingConsent" className="mt-1" />
+          I consent to marketing communications.
+        </label>
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="joinBaronsClub" className="mt-1" />
+          I want to join the Barons Club.
+        </label>
+        <p className="pl-6 text-[11px] text-muted">
+          Guests hear about seasonal menus, pods and loyalty rewards first.
+        </p>
+      </div>
       <button type="submit" className="button-accent inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold">
         {submitted ? 'Message sent — thank you' : 'Send message'}
       </button>
-      <p className="text-xs text-muted">
-        In the production build this routes live into the CRM with auto responder and ticketing.
-      </p>
+      <p className="text-xs text-muted">Our team aims to reply within one working day.</p>
     </form>
   );
 }

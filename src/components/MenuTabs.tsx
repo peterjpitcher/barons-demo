@@ -1,79 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import {
-  allDayMenu,
-  brunchMenu,
-  dessertMenu,
-  eventBuffetMenu,
-  festiveMenus,
-  pizzaShackMenu,
-  childrenMenu,
-  type MenuCategory,
-} from '@/data/menus';
-
-const MENU_GROUPS = [
-  {
-    key: 'all-day',
-    label: 'All Day Dining',
-    description: 'Pub classics, roasts and bar favourites available throughout the day.',
-    downloadHref: '/pdf/main-menu.pdf',
-    categories: allDayMenu,
-  },
-  {
-    key: 'brunch',
-    label: 'Brunch & Breakfast',
-    description: brunchMenu.description,
-    downloadHref: brunchMenu.downloadHref,
-    categories: brunchMenu.categories,
-  },
-  {
-    key: 'desserts',
-    label: 'Desserts & Shakes',
-    description: dessertMenu.description,
-    downloadHref: dessertMenu.downloadHref,
-    categories: dessertMenu.categories,
-  },
-  {
-    key: 'pizza',
-    label: 'Pizza Shack',
-    description: pizzaShackMenu.description,
-    downloadHref: pizzaShackMenu.downloadHref,
-    categories: pizzaShackMenu.categories,
-  },
-  {
-    key: 'events',
-    label: 'Events & Buffets',
-    description: eventBuffetMenu.description,
-    downloadHref: eventBuffetMenu.downloadHref,
-    categories: eventBuffetMenu.categories,
-  },
-  {
-    key: 'kids',
-    label: 'Children Menu',
-    description: childrenMenu.description,
-    downloadHref: childrenMenu.downloadHref,
-    categories: childrenMenu.categories,
-  },
-  {
-    key: 'festive',
-    label: 'Festive Dining',
-    description: festiveMenus.description,
-    downloadHref: festiveMenus.downloadHref,
-    categories: festiveMenus.categories,
-    seasonalNote: 'Available throughout the Christmas season.',
-  },
-] satisfies {
-  key: string;
-  label: string;
-  description?: string;
-  downloadHref?: string;
-  categories: MenuCategory[];
-  seasonalNote?: string;
-}[];
+import type { MenuCategory } from '@/data/menus';
+import { menuGroups } from '@/data/menuGroups';
 
 const collectTotalItems = () =>
-  MENU_GROUPS.reduce((count, group) => {
+  menuGroups.reduce((count, group) => {
     return (
       count +
       group.categories.reduce((acc, category) => acc + category.items.length, 0)
@@ -85,7 +18,7 @@ export function MenuTabs() {
   const searchTerm = query.trim().toLowerCase();
 
   const groups = useMemo(() => {
-    return MENU_GROUPS.map((group) => {
+    return menuGroups.map((group) => {
       const filteredCategories = group.categories.map((category) => {
         if (!searchTerm) {
           return category;
@@ -99,7 +32,7 @@ export function MenuTabs() {
           return haystack.includes(searchTerm);
         });
 
-        return { ...category, items } satisfies MenuCategory;
+        return { ...category, items } as MenuCategory;
       });
 
       const matches = filteredCategories.some((category) => category.items.length > 0);
@@ -128,7 +61,8 @@ export function MenuTabs() {
         <div className="space-y-2">
           <p className="text-xs uppercase tracking-[0.3em] text-subtle">Browse every dish</p>
           <p className="text-sm text-muted md:max-w-2xl">
-            Search or scroll to see each menu rendered in full — helpful for guests, search engines and planners alike.
+            Search or scroll to see every dish in one place — ideal for guests planning visits or hosting friends and
+            family.
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -149,7 +83,7 @@ export function MenuTabs() {
       </div>
 
       <div className="flex flex-wrap items-center gap-2">
-        {MENU_GROUPS.map((group) => (
+        {menuGroups.map((group) => (
           <a
             key={group.key}
             href={`#menu-${group.key}`}
@@ -163,7 +97,7 @@ export function MenuTabs() {
       <p className="text-xs uppercase tracking-wide text-subtle">
         {searchTerm
           ? `Showing ${resultsCount} ${resultsCount === 1 ? 'dish' : 'dishes'} for “${query.trim()}”`
-          : `${totalItems} dishes across ${MENU_GROUPS.length} menus`}
+          : `${totalItems} dishes across ${menuGroups.length} menus`}
       </p>
 
       <div className="space-y-10">
@@ -187,6 +121,12 @@ export function MenuTabs() {
                     Download {group.label} (PDF)
                   </a>
                 ) : null}
+                <Link
+                  href={`/menus/${group.key}`}
+                  className="text-sm font-semibold text-primary hover:underline"
+                >
+                  View the dedicated {group.label} page
+                </Link>
               </div>
 
               {hasResults ? (

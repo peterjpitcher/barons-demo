@@ -159,15 +159,24 @@ export function BookingForm() {
           />
         </div>
       </div>
-      <label className="flex items-start gap-3 text-xs text-muted">
-        <input type="checkbox" name="clubOptIn" className="mt-1" />
-        Keep me posted with Barons Club perks and local events.
-      </label>
+      <div className="space-y-2 text-xs text-muted">
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="marketingConsent" className="mt-1" />
+          I consent to marketing communications.
+        </label>
+        <label className="flex items-start gap-3">
+          <input type="checkbox" name="joinBaronsClub" className="mt-1" />
+          I want to join the Barons Club.
+        </label>
+        <p className="pl-6 text-[11px] text-muted">
+          Stay in the loop with dining offers, pod releases and guest rewards.
+        </p>
+      </div>
       <button type="submit" className="button-accent inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold">
         {submitted ? 'Request received — team will confirm soon' : 'Check availability'}
       </button>
       <p className="text-xs text-muted">
-        Submissions route to the CRM in production; confirmations and deposits will be automated from there.
+        We confirm every request by email or phone and share any pre-order details you might need.
       </p>
     </form>
   );

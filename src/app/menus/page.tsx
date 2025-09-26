@@ -1,7 +1,9 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { MenuTabs } from '@/components/MenuTabs';
 import { highlightDishes } from '@/data/siteContent';
 import { menuDownloads } from '@/data/menus';
+import { menuGroups } from '@/data/menuGroups';
 
 const menuHero = 'https://assets.baronspubs.com/uploads/sites/2/2022/01/Photo-07-01-2022-10-44-35-960x540.jpg';
 const menuHeroAlt = 'Sunday roast dishes being plated at The Cricketers';
@@ -19,9 +21,9 @@ const legend = [
 ];
 
 const roadmap = [
-  'Structured CMS data powering search, filters and seasonal toggles.',
-  'Menu badges for chef specials, low & no, or kids favourites.',
-  'Smart suggestions based on time of day (breakfast vs evening service).',
+  'Seasonal specials appear instantly with clear badges and tasting notes.',
+  'Low & no alcohol serves, vegan dishes and family favourites are highlighted for easy browsing.',
+  'Smart suggestions adapt to breakfast, lunch and evening visits.',
 ];
 
 const menuLibraryGroups: {
@@ -72,12 +74,12 @@ export default function MenusPage() {
         <div className="space-y-6">
           <p className="font-display text-xs uppercase tracking-[0.3em] text-muted">Menus · Explore everything</p>
           <h1 className="font-display text-3xl font-semibold text-primary sm:text-4xl">
-            Every Barons menu organised for quick browsing
+            Every Barons menu ready to browse and download
           </h1>
           <p className="text-sm text-muted sm:text-base">
-            Scroll to discover every dish, then download the PDFs for planning and sharing. Breakfast, all-day dining,
-            desserts, Pizza Shack, buffet spreads and festive menus are all captured below for easy reference and SEO
-            visibility.
+            Explore breakfast favourites, all-day pub classics, sweet treats, Pizza Shack specials, buffet spreads and
+            festive celebrations. Each section below lists every dish for easy reading, with quick links to a printable
+            PDF and a dedicated menu page.
           </p>
         </div>
 
@@ -105,6 +107,18 @@ export default function MenusPage() {
               </li>
             ))}
           </ul>
+        </div>
+
+        <div className="flex flex-wrap gap-2">
+          {menuGroups.map((group) => (
+            <Link
+              key={group.key}
+              href={`/menus/${group.key}`}
+              className="button-outline rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide"
+            >
+              View {group.label}
+            </Link>
+          ))}
         </div>
 
         <div className="relative overflow-hidden rounded-3xl border surface-card shadow-lg">
@@ -142,8 +156,7 @@ export default function MenusPage() {
           <div>
             <h2 className="font-display text-2xl font-semibold text-primary">Full menu library</h2>
             <p className="mt-1 max-w-2xl text-sm text-muted">
-              Every current PDF sits here for a quick download so planners, suppliers and the wider Barons team can
-              share the detail in seconds.
+              Every current PDF sits here for a quick download so guests, hosts and party planners can share the detail in seconds.
             </p>
           </div>
           <p className="text-xs uppercase tracking-wide text-subtle">{menuDownloads.length} documents available</p>
@@ -204,7 +217,7 @@ export default function MenusPage() {
               ))}
             </ul>
             <p className="mt-4 text-xs uppercase tracking-wide text-muted">
-              Production integrations will connect directly to the CMS and allergens database.
+              Coming soon: live menu updates, allergen filters and shareable wishlists.
             </p>
           </div>
           <div className="rounded-3xl border surface-card p-6 shadow-sm">

@@ -20,9 +20,12 @@ export function BaronsClubSignup() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Placeholder for CRM integration
-    console.info('[Barons Club signup]', { email });
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+    console.info('[Barons Club signup]', payload);
     setSubmitted(true);
+    form.reset();
     setEmail('');
   };
 
@@ -79,11 +82,21 @@ export function BaronsClubSignup() {
                 boxShadow: 'none',
               }}
             />
+            <div className="space-y-2 text-xs text-muted">
+              <label className="flex items-start gap-3">
+                <input type="checkbox" name="marketingConsent" className="mt-1" />
+                I consent to receive marketing communications.
+              </label>
+              <label className="flex items-start gap-3">
+                <input type="checkbox" name="joinBaronsClub" className="mt-1" defaultChecked />
+                I want to join the Barons Club.
+              </label>
+            </div>
             <button type="submit" className="button-accent inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold">
               {submitted ? 'Thanks for registering!' : 'Join the Barons Club'}
             </button>
             <p className="text-xs text-muted">
-              GDPR-compliant consent copy will sit here. Members can choose venues and interests to personalise updates.
+              Members receive tailored news, rewards and invitations. You can update preferences or unsubscribe at any time.
             </p>
           </form>
         </div>
