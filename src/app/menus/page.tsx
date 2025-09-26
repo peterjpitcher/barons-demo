@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { MenuTabs } from '@/components/MenuTabs';
 import { highlightDishes } from '@/data/siteContent';
-import { menuDownloads } from '@/data/menus';
+import { menuDownloads, type MenuCategory } from '@/data/menus';
 import { menuGroups } from '@/data/menuGroups';
 
 const menuHero = 'https://assets.baronspubs.com/uploads/sites/2/2022/01/Photo-07-01-2022-10-44-35-960x540.jpg';
@@ -10,7 +9,7 @@ const menuHeroAlt = 'Sunday roast dishes being plated at The Cricketers';
 
 const quickFacts = [
   { label: 'Service windows', value: 'Breakfast · All day · Sunday carvery' },
-  { label: 'Dietary support', value: 'NGCI, Vegan and Vegetarian badges' },
+  { label: 'Dietary support', value: 'NGCI, vegan and vegetarian badges' },
   { label: 'Downloads ready', value: `${menuDownloads.length} printable PDFs` },
 ];
 
@@ -26,48 +25,22 @@ const roadmap = [
   'Smart suggestions adapt to breakfast, lunch and evening visits.',
 ];
 
-const menuLibraryGroups: {
-  title: string;
-  description: string;
-  slugs: string[];
-}[] = [
-  {
-    title: 'Dining menus',
-    description: 'All-day dishes, daily set lunches and plated event menus straight from the kitchen team.',
-    slugs: ['main-menu', 'set-lunch', 'set-menu-events'],
-  },
-  {
-    title: 'Buffets & sharing feasts',
-    description: 'From afternoon teas and BBQ spreads to party buffets and pizza feasts for big gatherings.',
-    slugs: ['fork-buffet', 'afternoon-buffet', 'party-buffet', 'bbq-menu', 'pizza-feast'],
-  },
-  {
-    title: 'Pizza Shack',
-    description: 'Garden shack menus, perfect for summer evenings with friends and family.',
-    slugs: ['pizza-shack'],
-  },
-  {
-    title: 'Brunch & children',
-    description: 'Morning favourites plus little-ones menus covering daytime dining and parties.',
-    slugs: ['brunch-menu', 'childrens-menu', 'childrens-brunch'],
-  },
-  {
-    title: 'Sweet treats & drinks',
-    description: 'Desserts, shakes and the full bar list for planning puddings or after-dinner drinks.',
-    slugs: ['puddings', 'drinks-menu'],
-  },
-  {
-    title: 'Festive season',
-    description: 'Christmas celebrations, carvery line-ups and seasonal opening hours ready for December.',
-    slugs: ['festive-buffet', 'christmas-celebration', 'christmas-day-carvery', 'festive-opening-hours'],
-  },
-];
+const pickHighlightDishes = (categories: MenuCategory[], limit = 3) => {
+  const dishes: { name: string; description?: string }[] = [];
+
+  for (const category of categories) {
+    for (const item of category.items) {
+      dishes.push({ name: item.name, description: item.description });
+      if (dishes.length >= limit) {
+        return dishes;
+      }
+    }
+  }
+
+  return dishes;
+};
 
 export default function MenusPage() {
-  const downloadsBySlug = new Map(
-    menuDownloads.map((entry) => [entry.href.replace('/pdf/', '').replace('.pdf', ''), entry]),
-  );
-
   return (
     <div className="mx-auto mt-16 mb-20 w-full max-w-6xl space-y-16 px-4 sm:mt-20 sm:mb-24 sm:px-6">
       <header className="space-y-8">
@@ -78,8 +51,8 @@ export default function MenusPage() {
           </h1>
           <p className="text-sm text-muted sm:text-base">
             Explore breakfast favourites, all-day pub classics, sweet treats, Pizza Shack specials, buffet spreads and
-            festive celebrations. Each section below lists every dish for easy reading, with quick links to a printable
-            PDF and a dedicated menu page.
+            festive celebrations. Pick the menu that suits your visit, review the dishes in detail, then download the PDF
+            for easy sharing with friends or colleagues.
           </p>
         </div>
 
@@ -91,35 +64,6 @@ export default function MenusPage() {
             </div>
           ))}
         </dl>
-
-        <div className="rounded-2xl border border-dashed surface-card p-4 shadow-sm">
-          <p className="font-display text-lg font-semibold text-primary">Need a printable version?</p>
-          <p className="mt-2 text-sm text-muted">
-            Download the PDFs for team briefings, table planners and allergen checks. The live menus below mirror the
-            same data.
-          </p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {menuDownloads.map((link) => (
-              <li key={link.href}>
-                <a href={link.href} className="text-sm font-semibold text-primary hover:underline">
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {menuGroups.map((group) => (
-            <Link
-              key={group.key}
-              href={`/menus/${group.key}`}
-              className="button-outline rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wide"
-            >
-              View {group.label}
-            </Link>
-          ))}
-        </div>
 
         <div className="relative overflow-hidden rounded-3xl border surface-card shadow-lg">
           <Image
@@ -145,55 +89,62 @@ export default function MenusPage() {
         </div>
       </header>
 
-      <section className="space-y-8">
-        <div className="rounded-3xl border surface-card p-6 shadow-sm">
-          <MenuTabs />
-        </div>
-      </section>
-
       <section className="space-y-6">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <div>
-            <h2 className="font-display text-2xl font-semibold text-primary">Full menu library</h2>
-            <p className="mt-1 max-w-2xl text-sm text-muted">
-              Every current PDF sits here for a quick download so guests, hosts and party planners can share the detail in seconds.
-            </p>
-          </div>
-          <p className="text-xs uppercase tracking-wide text-subtle">{menuDownloads.length} documents available</p>
+        <div className="space-y-3">
+          <p className="font-display text-xs uppercase tracking-[0.3em] text-muted">Our menus</p>
+          <h2 className="font-display text-2xl font-semibold text-primary sm:text-3xl">Pick a menu and start planning</h2>
+          <p className="max-w-3xl text-sm text-muted">
+            Each menu page lists every dish, dietary badge and price so guests can decide ahead. Use the download button
+            for a PDF copy, or tap the view button to explore the dedicated page with the full line-up.
+          </p>
         </div>
 
-        <div className="space-y-5">
-          {menuLibraryGroups.map((group) => {
-            const groupDownloads = group.slugs
-              .map((slug) => downloadsBySlug.get(slug))
-              .filter((download): download is (typeof menuDownloads)[number] => Boolean(download));
-
-            if (groupDownloads.length === 0) {
-              return null;
-            }
+        <div className="grid gap-6 md:grid-cols-2">
+          {menuGroups.map((group) => {
+            const featured = pickHighlightDishes(group.categories);
 
             return (
-              <div key={group.title} className="space-y-3">
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-primary">{group.title}</h3>
-                  <p className="text-sm text-muted">{group.description}</p>
+              <article key={group.key} className="space-y-4 rounded-3xl border surface-card p-6 shadow-sm">
+                <div className="space-y-2">
+                  <h3 className="font-display text-xl font-semibold text-primary">{group.label}</h3>
+                  {group.description ? <p className="text-sm text-muted">{group.description}</p> : null}
+                  {group.seasonalNote ? (
+                    <p className="text-xs uppercase tracking-[0.2em] text-subtle">{group.seasonalNote}</p>
+                  ) : null}
                 </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {groupDownloads.map((download) => (
-                    <div key={download.href} className="rounded-3xl border surface-card p-5 shadow-sm">
-                      <p className="text-sm font-semibold text-primary">{download.label}</p>
-                      <p className="mt-2 text-xs uppercase tracking-[0.2em] text-subtle">PDF download</p>
-                      <a
-                        href={download.href}
-                        download
-                        className="button-outline mt-4 inline-flex w-fit rounded-full px-4 py-2 text-sm font-semibold"
-                      >
-                        Download PDF
-                      </a>
-                    </div>
-                  ))}
+
+                {featured.length > 0 ? (
+                  <div className="space-y-2">
+                    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-subtle">Guest favourites</p>
+                    <ul className="space-y-2 text-sm text-muted">
+                      {featured.map((item) => (
+                        <li key={item.name}>
+                          <span className="font-semibold text-primary">{item.name}</span>
+                          {item.description ? <span className="text-muted"> — {item.description}</span> : null}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href={`/menus/${group.key}`}
+                    className="button-accent inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold"
+                  >
+                    View {group.label}
+                  </Link>
+                  {group.downloadHref ? (
+                    <a
+                      href={group.downloadHref}
+                      download
+                      className="button-outline inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold"
+                    >
+                      Download PDF
+                    </a>
+                  ) : null}
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
@@ -204,7 +155,7 @@ export default function MenusPage() {
           <h2 className="font-display text-xl font-semibold text-primary">Chef&apos;s notes</h2>
           <ul className="mt-3 space-y-3 text-sm text-muted">
             <li>Sunday Carvery remains the hero — three roasts, veggie wellington and sides refreshed seasonally.</li>
-            <li>Pizza Shack opens evenings and Saturdays; the interface will surface shack specials when the hatch is on.</li>
+            <li>Pizza Shack opens evenings and Saturdays; we flag shack specials and takeaway availability in real time.</li>
             <li>Breakfast and brunch launch 9am daily: smashed avo, duck & waffle and sweet options for families.</li>
           </ul>
         </div>
@@ -230,7 +181,7 @@ export default function MenusPage() {
               ))}
             </ul>
             <p className="mt-4 text-xs uppercase tracking-wide text-muted">
-              Full allergens integration lands with the Barons App rollout.
+              Speak to the team about allergens — we cater for gluten-free, vegan and family-friendly requests every day.
             </p>
           </div>
         </div>

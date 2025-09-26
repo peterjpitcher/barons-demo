@@ -13,7 +13,7 @@ type SeasonContextValue = {
 const SeasonContext = createContext<SeasonContextValue | undefined>(undefined);
 
 export function SeasonProvider({ children }: { children: React.ReactNode }) {
-  const [season, setSeason] = useState<SeasonKey>('classic');
+  const [season, setSeason] = useState<SeasonKey>('christmas');
 
   const value = useMemo(() => {
     return {

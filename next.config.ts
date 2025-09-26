@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'assets.baronspubs.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'assets.meadehall.co.uk',
+      },
     ],
   },
 };
