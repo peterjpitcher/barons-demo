@@ -142,8 +142,8 @@ export default function MenusPage() {
           <div>
             <h2 className="font-display text-2xl font-semibold text-primary">Full menu library</h2>
             <p className="mt-1 max-w-2xl text-sm text-muted">
-              Every current PDF is embedded below so planners, suppliers and the wider Barons team can skim the detail
-              without leaving the page. Expand a section to preview or download in one tap.
+              Every current PDF sits here for a quick download so planners, suppliers and the wider Barons team can
+              share the detail in seconds.
             </p>
           </div>
           <p className="text-xs uppercase tracking-wide text-subtle">{menuDownloads.length} documents available</p>
