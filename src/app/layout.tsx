@@ -4,6 +4,8 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { SuperHeader } from '@/components/SuperHeader';
+import { SeasonalBanner } from '@/components/SeasonalBanner';
+import { ChristmasLightbox } from '@/components/ChristmasLightbox';
 import { SeasonProvider } from '@/context/SeasonContext';
 import { StyleProvider } from '@/context/StyleContext';
 
@@ -45,10 +47,12 @@ export default function RootLayout({
             </a>
             <SuperHeader />
             <Header />
+            <SeasonalBanner />
             <main id="main" className="min-h-[60vh]">
               {children}
             </main>
             <Footer />
+            <ChristmasLightbox />
           </SeasonProvider>
         </StyleProvider>
       </body>

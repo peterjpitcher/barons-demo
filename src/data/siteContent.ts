@@ -98,7 +98,7 @@ export const galleryImages = [
     caption: 'Pods & terrace evenings',
   },
   {
-    src: 'https://assets.baronspubs.com/uploads/sites/2/2020/02/Barons-Pub-Company-Cricketers-interior-13-960x540.jpg',
+    src: 'https://assets.baronspubs.com/uploads/sites/2/2018/09/cricketers-interior-3-1600x900.jpg',
     alt: 'Interior dining room with natural light and laid tables',
     caption: 'Light-filled dining room',
   },

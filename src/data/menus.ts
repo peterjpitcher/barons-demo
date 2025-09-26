@@ -268,7 +268,7 @@ export const festiveMenus: SpecialMenuGroup = {
   key: 'festive',
   title: 'Festive dining',
   description: 'December celebrations, Christmas Day lunch and buffet feasts.',
-  downloadHref: '/pdf/Christmas-Celebration-Menus-Letter-2025.pdf',
+  downloadHref: '/pdf/christmas-celebration.pdf',
   season: 'christmas',
   categories: [
     {
@@ -321,7 +321,7 @@ export const pizzaShackMenu: SpecialMenuGroup = {
   key: 'pizza-shack',
   title: 'Pizza Shack',
   description: 'Hand-stretched sourdough pizzas from our garden shack — walk-ups or pre-order.',
-  downloadHref: '/pdf/Pizza-Shack-Menu.pdf',
+  downloadHref: '/pdf/pizza-shack.pdf',
   categories: [
     {
       id: 'pizzas',
@@ -353,7 +353,7 @@ export const eventBuffetMenu: SpecialMenuGroup = {
   key: 'event-buffet',
   title: 'Events & buffets',
   description: 'Menus designed for wakes, celebrations of life, parties and corporate gatherings.',
-  downloadHref: '/pdf/Party-Menu-JULY-2025.pdf',
+  downloadHref: '/pdf/party-buffet.pdf',
   categories: [
     {
       id: 'buffet',
@@ -380,7 +380,7 @@ export const childrenMenu: SpecialMenuGroup = {
   key: 'children',
   title: "Children's favourites",
   description: 'Smaller plates for young diners — also available as half portions of classics.',
-  downloadHref: '/pdf/March-2025-Barons-Childrens-Menu-1.pdf',
+  downloadHref: '/pdf/childrens-menu.pdf',
   categories: [
     {
       id: 'kids',
@@ -408,11 +408,21 @@ export const childrenMenu: SpecialMenuGroup = {
 
 export const menuDownloads = [
   { label: 'Full main menu', href: '/pdf/main-menu.pdf' },
+  { label: 'Set lunch menu', href: '/pdf/set-lunch.pdf' },
+  { label: 'Set menu – events dining', href: '/pdf/set-menu-events.pdf' },
+  { label: 'Fork buffet options', href: '/pdf/fork-buffet.pdf' },
+  { label: 'Afternoon buffet', href: '/pdf/afternoon-buffet.pdf' },
+  { label: 'Party buffet packages', href: '/pdf/party-buffet.pdf' },
+  { label: 'BBQ menu', href: '/pdf/bbq-menu.pdf' },
+  { label: 'Pizza feast sharing menu', href: '/pdf/pizza-feast.pdf' },
+  { label: 'Pizza Shack menu', href: '/pdf/pizza-shack.pdf' },
   { label: 'Brunch & breakfast', href: '/pdf/brunch-menu.pdf' },
-  { label: "Children's menu", href: '/pdf/March-2025-Barons-Childrens-Menu-1.pdf' },
-  { label: 'Desserts & hot drinks', href: '/pdf/puddings.pdf' },
-  { label: 'Pizza Shack menu', href: '/pdf/Pizza-Shack-Menu.pdf' },
-  { label: 'Party buffet & events', href: '/pdf/Party-Menu-JULY-2025.pdf' },
-  { label: 'Christmas celebrations', href: '/pdf/Christmas-Celebration-Menus-Letter-2025.pdf' },
-  { label: 'Christmas Day lunch', href: '/pdf/Christmas-Day-Carvery-Menu-Childrens-Menu-.pdf' },
+  { label: "Children's favourites", href: '/pdf/childrens-menu.pdf' },
+  { label: "Children's brunch", href: '/pdf/childrens-brunch.pdf' },
+  { label: 'Desserts & shakes', href: '/pdf/puddings.pdf' },
+  { label: 'Drinks list', href: '/pdf/drinks-menu.pdf' },
+  { label: 'Festive buffet', href: '/pdf/festive-buffet.pdf' },
+  { label: 'Christmas celebrations', href: '/pdf/christmas-celebration.pdf' },
+  { label: 'Christmas Day carvery & kids', href: '/pdf/christmas-day-carvery.pdf' },
+  { label: 'Festive opening hours', href: '/pdf/festive-opening-hours.pdf' },
 ];

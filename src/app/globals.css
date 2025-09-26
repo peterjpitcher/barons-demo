@@ -201,6 +201,93 @@ select:focus-visible {
   background-color: var(--header-bg) !important;
 }
 
+.seasonal-banner {
+  background: linear-gradient(90deg, var(--header-bg), var(--accent));
+  color: var(--accent-contrast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.seasonal-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.seasonal-banner__marquee {
+  flex: 1;
+  overflow: hidden;
+}
+
+.seasonal-banner__track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  width: max-content;
+  animation: seasonal-banner-marquee 26s linear infinite;
+}
+
+.seasonal-banner__item {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+.seasonal-banner:hover .seasonal-banner__track {
+  animation-play-state: paused;
+}
+
+@keyframes seasonal-banner-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seasonal-banner__track {
+    animation: none;
+    transform: none;
+  }
+}
+
+.christmas-lightbox {
+  animation: lightbox-fade 0.3s ease forwards;
+}
+
+.lightbox-panel {
+  transform: scale(0.95) translateY(12px);
+  opacity: 0;
+  animation: lightbox-pop 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+@keyframes lightbox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .bg-\[#314759\] {
   background-color: var(--footer-bg) !important;
 }

@@ -24,8 +24,11 @@ export function Header() {
       style={{ backgroundColor: 'var(--header-bg)', backdropFilter: 'blur(10px)' }}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 py-4 sm:px-6">
-        <Link href="/" className="font-display text-xl font-semibold tracking-wide">
-          Barons Family · The Cricketers
+        <Link href="/" className="flex flex-col leading-tight text-white">
+          <span className="font-display text-2xl font-semibold tracking-wide sm:text-3xl">The Cricketers</span>
+          <span className="text-xs font-semibold tracking-[0.25em] text-white/70">
+            a Barons Pub
+          </span>
         </Link>
         <div className="flex items-center gap-4">
           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
